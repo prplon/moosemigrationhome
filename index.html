@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  @font-face { font-family: 'Millimetre'; src: url('assets/Millimetre-Bold.otf') format('opentype'); font-weight: 400 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Millimetre'; src: url('assets/Millimetre-Extrablack.otf') format('opentype'); font-weight: 800 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'BluuNext'; src: url('assets/BluuNext-Bold.otf') format('opentype'); font-weight: 400 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'BluuNext'; src: url('assets/BluuNext-Bolditalic.otf') format('opentype'); font-weight: 400 700; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'BluuNext Titling'; src: url('assets/BluuNext-Titling.otf') format('opentype'); font-weight: 400 900; font-style: normal; font-display: swap; }
+  html { scroll-behavior: smooth; }
+  x-dc section, x-dc footer { position: relative; z-index: 1; }
+  x-dc header { z-index: 2147483000 !important; }
+  x-dc section, x-dc section * { z-index: auto; }
+  body { margin: 0; background-color: #F4F1EA;  color: #221B17; font-family: 'Millimetre', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, blockquote { font-family: 'BluuNext Titling', 'BluuNext', Georgia, serif; font-weight: 400; }
+  * { box-sizing: border-box; }
+  a { color: #005A9C; text-decoration: none; }
+  a:hover { color: #E1002A; }
+  ::selection { background: #FFCC00; color: #221B17; }
+  @keyframes mm-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .mm-rev { opacity: 0; }
+  .mm-rev.mm-in { animation: mm-rise 900ms cubic-bezier(.16,.84,.29,1) forwards; }
+  @keyframes mm-drift { from { transform: scale(1.06) translateY(0); } to { transform: scale(1.14) translateY(-2%); } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; overflow-x: hidden; position: relative; isolation: isolate;">
+
+  <header id="mm-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 32px; background: #F4F1EA; transition: transform 320ms cubic-bezier(.22,.68,.28,1); willChange: transform; borderBottom: 1px solid rgba(34,27,23,.10);">
+    <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 12px; color: #221B17;" style-hover="color:#E1002A">
+      <img src="assets/icon.png" alt="Moose crossing icon" style="display: block; width: 34px; height: 34px; objectFit: contain;" />
+      <span style="font-weight: 900; font-size: 14px; letter-spacing: .14em; text-transform: uppercase;">Moose Migration</span>
+    </a>
+    <nav style="display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;">
+      <a href="#journey" style="color: #6B615A;" style-hover="color:#221B17">The journey</a>
+      <a href="#gallery" style="color: #6B615A;" style-hover="color:#221B17">Screenshots</a>
+      <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="position: relative; display: inline-flex; align-items: center; gap: 10px; background: #005A9C; color: #fff; padding: 12px 16px 12px 18px; marginRight: 16px; letter-spacing: .08em; borderRadius: 8px;" style-hover="background:#E1002A" style-after="content:'';position:absolute;right:-9px;top:50%;width:26px;height:26px;background:inherit;border-radius:0 6px 0 0;transform:translateY(-50%) rotate(45deg);clip-path:polygon(0 0, 100% 0, 100% 100%)">Wishlist on Steam<span aria-hidden="true" style="display: block; width: 9px; height: 9px; border-top: 2.5px solid #fff; border-right: 2.5px solid #fff; transform: rotate(45deg); marginRight: 4px;"></span></a>
+    </nav>
+  </header>
+
+  <section id="top" style="position: relative; height: 100vh; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden;">
+    <div style="position: absolute; inset: 0;">
+      <img id="mm-hero-img" src="assets/hero.png" alt="A moose crossing snowfields at sunrise" style="width: 100%; height: 100%; objectFit: cover; objectPosition: center 40%; transform: scale(1.1); willChange: transform;" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,18,12,.80) 0%, rgba(30,18,12,.30) 42%, rgba(30,18,12,.08) 100%);"></div>
+    </div>
+    <div style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 32px 72px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 48px; align-items: end;">
+      <div>
+        <p style="margin: 0 0 20px; font-size: 13px; font-weight: 900; letter-spacing: .26em; text-transform: uppercase; color: #FFCC00;">An amoosing adventure</p>
+        <h1 style="margin: 0; font-size: clamp(52px, 8.2vw, 132px); line-height: .9; font-weight: 400; letter-spacing: -.03em; color: #FFFDF8; text-wrap: balance;">Moose<br />Migration</h1>
+        <p style="margin: 28px 0 0; max-width: 46ch; font-family: 'BluuNext', Georgia, serif; font-size: clamp(19px, 1.6vw, 24px); line-height: 1.5; color: rgba(255,253,248,.88);">Every spring the moose leave the deep winter forest behind and walk north to new grazing grounds. This year the walk is yours.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px;">
+          <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="position: relative; display: inline-flex; align-items: center; gap: 12px; background: #E1002A; color: #fff; padding: 15px 12px 15px 22px; marginRight: 22px; borderRadius: 9px 0 0 9px; font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;" style-hover="background:#FFCC00;color:#221B17" style-after="content:'';position:absolute;right:-17px;top:50%;width:34px;height:34px;box-sizing:border-box;background:inherit;border-radius:0 7px 0 0;transform:translateY(-50%) rotate(45deg);clip-path:polygon(0 0, 100% 0, 100% 100%)">Wishlist on Steam<span aria-hidden="true" style="display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg); marginRight: 4px;"></span></a>
+          <a href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" style="position: relative; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid currentColor; borderRight: none; color: rgba(255,253,248,.62); padding: 15px 10px 15px 20px; marginRight: 26px; borderRadius: 9px 0 0 9px; font-size: 15px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;" style-hover="color:#FFFDF8;background:rgba(255,253,248,.16)" style-after="content:'';position:absolute;right:-17px;top:50%;width:34px;height:34px;box-sizing:border-box;background:inherit;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;border-radius:0 7px 0 0;transform:translateY(-50%) rotate(45deg);clip-path:polygon(-8% -8%, 108% -8%, 108% 108%)">Bluesky<span aria-hidden="true" style="display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg); marginRight: 4px;"></span></a>
+          <a href="https://x.com/MooseMigration_" target="_blank" rel="noopener" style="position: relative; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid currentColor; borderRight: none; color: rgba(255,253,248,.62); padding: 15px 14px 15px 24px; marginRight: 26px; borderRadius: 9px 0 0 9px; font-size: 15px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;" style-hover="color:#FFFDF8;background:rgba(255,253,248,.16)" style-after="content:'';position:absolute;right:-17px;top:50%;width:34px;height:34px;box-sizing:border-box;background:inherit;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;border-radius:0 7px 0 0;transform:translateY(-50%) rotate(45deg);clip-path:polygon(-8% -8%, 108% -8%, 108% 108%)">X<span aria-hidden="true" style="display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg); marginRight: 4px;"></span></a>
+          <a href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" style="position: relative; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid currentColor; borderRight: none; color: rgba(255,253,248,.62); padding: 15px 10px 15px 20px; marginRight: 26px; borderRadius: 9px 0 0 9px; font-size: 15px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;" style-hover="color:#FFFDF8;background:rgba(255,253,248,.16)" style-after="content:'';position:absolute;right:-17px;top:50%;width:34px;height:34px;box-sizing:border-box;background:inherit;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;border-radius:0 7px 0 0;transform:translateY(-50%) rotate(45deg);clip-path:polygon(-8% -8%, 108% -8%, 108% 108%)">Discord<span aria-hidden="true" style="display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg); marginRight: 4px;"></span></a>
+        </div>
+      </div>
+      <img id="mm-sign" src="assets/logo.png" alt="Moose crossing road sign" style="width: clamp(120px, 15vw, 210px); height: auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,.45)); willChange: transform;" />
+    </div>
+  </section>
+
+  <section id="journey" style="max-width: 1320px; margin: 0 auto; padding: 140px 32px 40px;">
+    <div class="mm-rev" style="display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(40px, 7vw, 120px); align-items: start;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 18px;">
+          <p style="margin: 0; font-size: 12px; font-weight: 900; letter-spacing: .24em; text-transform: uppercase; color: #E1002A;">01 / The spring migration</p>
+        </div>
+        <h2 style="margin: 0; font-size: clamp(34px, 3.8vw, 58px); line-height: 1.04; font-weight: 400; letter-spacing: -.02em; text-wrap: balance;">Every spring, the moose walk the old path. This year you are one of them.</h2>
+      </div>
+      <div style="padding-top: 10px;">
+        <p style="margin: 0; font-family: 'BluuNext', Georgia, serif; font-size: clamp(20px, 1.5vw, 25px); line-height: 1.55; color: #33291F;">Every spring the moose of the Nordic forest leave their wintering grounds and walk the road they have always walked. Out of the deep pine. Over melting bog and cracking ice. Past sleeping villages and gardens that were not here a lifetime ago. Up to where the new green breaks.</p>
+        <p style="margin: 26px 0 0; font-size: 17px; line-height: 1.65; color: #6B615A; max-width: 56ch;">Moose have walked it for thousands of years. None of them walked it like you will.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mm-rev" style="padding: 90px 0 0;">
+    <figure style="margin: 0; position: relative;">
+      <img src="assets/shot-cabin.png" alt="A moose at dusk beside a Nordic timber cabin" style="display: block; width: 100%; height: clamp(380px, 62vh, 720px); objectFit: cover;" />
+    </figure>
+    <figcaption style="max-width: 1320px; margin: 0 auto; padding: 16px 32px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Dusk in the north / the village sleeps, the herd moves</figcaption>
+  </section>
+
+  <section id="gallery" style="padding: 120px 0 0;">
+    <div class="mm-rev" style="max-width: 1320px; margin: 0 auto; padding: 0 32px 44px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flexWrap: wrap;">
+      <span style="display: flex; align-items: center; gap: 16px;">
+        <p style="margin: 0; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Screenshots</p>
+      </span>
+    </div>
+    <div class="mm-rev" style="max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px;">
+      <figure style="margin: 0; grid-column: span 4;">
+        <img src="assets/shot-snow.png" alt="Running across an open snowfield with the herd" style="display: block; width: 100%; height: 420px; objectFit: cover;" />
+        <figcaption style="margin-top: 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Winter / leaving the wintering grounds</figcaption>
+      </figure>
+      <figure style="margin: 0; grid-column: span 2;">
+        <img src="assets/shot-night.png" alt="Northern lights over a snowy plain" style="display: block; width: 100%; height: 420px; objectFit: cover;" />
+        <figcaption style="margin-top: 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Night / aurora</figcaption>
+      </figure>
+      <figure style="margin: 0; grid-column: span 2;">
+        <img src="assets/shot-forest.png" alt="Sprinting through a pine forest at dawn" style="display: block; width: 100%; height: 420px; objectFit: cover;" />
+        <figcaption style="margin-top: 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Spring / through the pines</figcaption>
+      </figure>
+      <figure style="margin: 0; grid-column: span 4;">
+        <img src="assets/shot-lake.png" alt="Overlooking a forest lake in golden light" style="display: block; width: 100%; height: 420px; objectFit: cover;" />
+        <figcaption style="margin-top: 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #8A7E75; font-weight: 600;">Late spring / the grazing grounds</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="mm-rev" style="max-width: 1320px; margin: 0 auto; padding: 130px 32px 0;">
+    <div style="display: flex; align-items: stretch; gap: clamp(24px, 4vw, 56px);">
+      <blockquote style="margin: 0; max-width: 26ch; font-family: 'Millimetre', sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 3.9vw, 58px); line-height: 1.04; letter-spacing: -.01em; color: #221B17;">The more you're moosin', the <span style="color: #E1002A;">more they'll find out.</span></blockquote>
+    </div>
+  </section>
+
+  <section style="margin-top: 110px; background: #221B17; color: #FFFDF8;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: clamp(80px, 10vw, 140px) 32px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(40px, 6vw, 100px); align-items: center;">
+      <div>
+        <h2 style="margin: 0; font-size: clamp(36px, 4.6vw, 70px); line-height: 1; font-weight: 400; letter-spacing: -.02em;">Walk with the herd.</h2>
+        <p style="margin: 24px 0 40px; max-width: 44ch; font-size: 18px; line-height: 1.6; color: rgba(255,253,248,.7);">The migration begins when the snow gives. Release date to be announced, so wishlist on Steam to be notified, and follow along for clips, moose facts and development notes.</p>
+        <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 12px; background: #FFCC00; color: #221B17; padding: 20px 34px; borderRadius: 999px; font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;" style-hover="background:#E1002A;color:#FFFDF8">Wishlist on Steam</a>
+      </div>
+      <div style="display: grid; gap: 1px; background: rgba(255,253,248,.16); border: 1px solid rgba(255,253,248,.16);">
+        <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #221B17; padding: 26px 28px; color: #FFFDF8;" style-hover="background:#005A9C">
+          <span style="font-size: 19px; font-weight: 700;">Steam store page</span>
+          <span style="font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,253,248,.6);">Wishlist →</span>
+        </a>
+        <a href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #221B17; padding: 26px 28px; color: #FFFDF8;" style-hover="background:#005A9C">
+          <span style="font-size: 19px; font-weight: 700;">Bluesky</span>
+          <span style="font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,253,248,.6);">@moosemigration →</span>
+        </a>
+        <a href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #221B17; padding: 26px 28px; color: #FFFDF8;" style-hover="background:#005A9C">
+          <span style="font-size: 19px; font-weight: 700;">Discord</span>
+          <span style="font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,253,248,.6);">Join the herd →</span>
+        </a>
+        <a href="https://x.com/MooseMigration_" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #221B17; padding: 26px 28px; color: #FFFDF8;" style-hover="background:#005A9C">
+          <span style="font-size: 19px; font-weight: 700;">X</span>
+          <span style="font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,253,248,.6);">@MooseMigration_ →</span>
+        </a>
+      </div>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 0 32px 56px;"></div>
+    <footer style="border-top: 1px solid rgba(255,253,248,.14);">
+      <div style="max-width: 1320px; margin: 0 auto; padding: 30px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flexWrap: wrap; font-size: 13px; color: rgba(255,253,248,.52); letter-spacing: .06em;">
+        <span>© Gamedreaming, made in the Nordics</span>
+        <span style="display: flex; gap: 22px;">
+          <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="color: rgba(255,253,248,.52);" style-hover="color:#FFCC00">Steam</a>
+          <a href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" style="color: rgba(255,253,248,.52);" style-hover="color:#FFCC00">Bluesky</a>
+          <a href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" style="color: rgba(255,253,248,.52);" style-hover="color:#FFCC00">Discord</a>
+          <a href="https://x.com/MooseMigration_" target="_blank" rel="noopener" style="color: rgba(255,253,248,.52);" style-hover="color:#FFCC00">X</a>
+        </span>
+      </div>
+    </footer>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('mm-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    document.querySelectorAll('.mm-rev').forEach((el) => io.observe(el));
+    this._io = io;
+
+    const header = document.getElementById('mm-header');
+    let lastY = window.scrollY || 0, hidden = false;
+    const setHeader = (y) => {
+      if (!header) return;
+      const delta = y - lastY;
+      if (y < 80) { if (hidden) { header.style.transform = 'translateY(0)'; hidden = false; } }
+      else if (delta > 6 && !hidden) { header.style.transform = 'translateY(-100%)'; hidden = true; }
+      else if (delta < -6 && hidden) { header.style.transform = 'translateY(0)'; hidden = false; }
+      if (Math.abs(delta) > 6) lastY = y;
+    };
+
+    const sign = document.getElementById('mm-sign');
+    const hero = document.getElementById('mm-hero-img');
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        const y = window.scrollY || 0;
+        if (sign) sign.style.transform = 'translate3d(0,' + (-y * 0.34).toFixed(1) + 'px,0) rotate(' + (y * 0.006).toFixed(2) + 'deg)';
+        if (hero) hero.style.transform = 'translate3d(0,' + (y * 0.16).toFixed(1) + 'px,0) scale(1.1)';
+        setHeader(y);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    this._onScroll = onScroll;
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>
