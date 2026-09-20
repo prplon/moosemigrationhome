@@ -5,31 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moose Migration</title>
 <meta name="description" content="Moose Migration is an adventure about the ancient journey moose have made every spring for thousands of years. Shape your own moose, wander through beautiful forests, cross lakes and streams, and become part of this ancient migration.">
-<meta name="theme-color" content="#14100D">
-<link rel="icon" href="assets/icon.png">
 <meta property="og:title" content="Moose Migration">
 <meta property="og:description" content="Moose Migration is an adventure about the ancient journey moose have made every spring for thousands of years. Shape your own moose, wander through beautiful forests, cross lakes and streams, and become part of this ancient migration.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/shot-dusk-water.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="assets/shot-shallows.png">
+<link rel="icon" href="assets/icon.png">
 <style>
+
   @font-face { font-family: 'Millimetre'; src: url('assets/Millimetre-Bold.otf') format('opentype'); font-weight: 400 700; font-style: normal; font-display: swap; }
   @font-face { font-family: 'Millimetre'; src: url('assets/Millimetre-Extrablack.otf') format('opentype'); font-weight: 800 900; font-style: normal; font-display: swap; }
   @font-face { font-family: 'BluuNext'; src: url('assets/BluuNext-Bold.otf') format('opentype'); font-weight: 400 700; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'BluuNext'; src: url('assets/BluuNext-Bolditalic.otf') format('opentype'); font-weight: 400 700; font-style: italic; font-display: swap; }
   @font-face { font-family: 'Norse'; src: url('assets/Norse.otf') format('opentype'); font-weight: 400 600; font-style: normal; font-display: swap; }
   @font-face { font-family: 'Norse'; src: url('assets/Norse-Bold.otf') format('opentype'); font-weight: 700 900; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'BluuNext Titling'; src: url('assets/BluuNext-Titling.otf') format('opentype'); font-weight: 400 900; font-style: normal; font-display: swap; }
-  html { scroll-behavior: smooth; background: #14100D; }
-  body { margin: 0; background-color: #14100D; color: #F4F1EA; font-family: 'Millimetre', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, blockquote { font-family: 'BluuNext Titling', 'BluuNext', Georgia, serif; font-weight: 400; }
+  html { scroll-behavior: smooth; background: #CBC08E; }
+  body { margin: 0; background-color: #CBC08E; color: #14100D; font-family: 'Millimetre', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   * { box-sizing: border-box; }
-  a { color: #F4F1EA; text-decoration: none; }
-  a:hover { color: #FFCC00; }
-  ::selection { background: #FFCC00; color: #14100D; }
+  a { color: #14100D; text-decoration: none; }
+  a:hover { color: #FFFDF8; }
+  ::selection { background: #14100D; color: #EFE6BE; }
   section, footer { position: relative; z-index: 1; }
-  header { z-index: 2147483000 !important; }
-  section, section * { z-index: auto; }
   @keyframes mm-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
   .mm-rev { opacity: 0; }
   .mm-rev.mm-in { animation: mm-rise 1000ms cubic-bezier(.16,.84,.29,1) forwards; }
@@ -43,237 +37,235 @@
   #mm-plate.mm-knock { animation: mm-plate-knock 1100ms cubic-bezier(.32,.06,.28,1) 1; }
   #mm-arrow-hinge { transform-origin: 45% 50%; animation: mm-arrow-in 1500ms cubic-bezier(.3,.06,.24,1) 900ms both; }
   #mm-rig { animation: mm-rig-sway 7.5s cubic-bezier(.45,0,.55,1) 2200ms infinite; }
-  #mm-rig:hover #mm-plate { filter: drop-shadow(0 16px 30px rgba(0,0,0,.5)) brightness(1.06); }
+  #mm-rig:hover #mm-plate { filter: drop-shadow(0 22px 34px rgba(60,48,16,.4)) brightness(1.05); }
+  @keyframes mm-honk { 0% { transform: rotate(0) scale(1); } 18% { transform: rotate(-9deg) scale(1.07); } 38% { transform: rotate(7deg) scale(1.04); } 58% { transform: rotate(-4.5deg) scale(1.02); } 78% { transform: rotate(2.5deg) scale(1.01); } 100% { transform: rotate(0) scale(1); } }
+  #mm-footer-sign.mm-honk { animation: mm-honk 900ms cubic-bezier(.3,.06,.28,1) 1; }
+  @keyframes mm-moo-pop { 0% { opacity: 0; transform: translateY(14px) scale(.9); } 22% { opacity: 1; transform: translateY(0) scale(1); } 78% { opacity: 1; transform: translateY(-6px) scale(1); } 100% { opacity: 0; transform: translateY(-20px) scale(.98); } }
+  #mm-moo.mm-pop { animation: mm-moo-pop 2200ms cubic-bezier(.2,.7,.3,1) 1; }
   @media (prefers-reduced-motion: reduce) { #mm-pole, #mm-plate, #mm-arrow-hinge, #mm-rig { animation: none !important; } .mm-rev { opacity: 1; } [data-parallax] { transform: none !important; } }
+  #mm-contact:hover span { background: #FFFDF8; }
+  .mm-hring span:last-child { font-weight: 800; transition: letter-spacing 160ms linear; }
+  .mm-hring:hover span:last-child, .mm-hring:focus-visible span:last-child { letter-spacing: .22em; }
+  @media (max-width: 900px) {
+    #top { display: flex !important; flex-direction: column; align-items: center; padding-top: clamp(48px, 7vh, 80px) !important; }
+    #top > div:nth-child(2) { order: 1; width: 100%; }
+    #mm-hero-left { order: 2; margin-top: clamp(26px, 5vh, 46px); }
+    #mm-hero-right { order: 3; margin-top: clamp(18px, 3vh, 28px); }
+    #mm-hero-left, #mm-hero-right { width: 100%; flex-direction: row !important; flex-wrap: wrap; justify-content: center; gap: 22px clamp(20px, 7vw, 40px) !important; }
+    .mm-hring { flex: 0 0 auto; }
+    .mm-hring > span:first-child { width: 62px !important; height: 62px !important; }
+    .mm-hring span:last-child { font-size: 13px !important; letter-spacing: .12em !important; }
+  }
   @media (max-width: 860px) {
-    #mm-header { padding: 12px 18px !important; }
-    #mm-header nav { gap: 16px !important; }
-    #mm-header nav a:not(:last-child) { display: none !important; }
-    #mm-gallery-grid { grid-template-columns: 1fr !important; }
+    #mm-gallery-grid, #mm-walk-grid { grid-template-columns: 1fr !important; }
     .mm-band-frame { height: 58vw !important; min-height: 240px; }
     .mm-pad { padding-left: 20px !important; padding-right: 20px !important; }
   }
-  [data-h="0"]:hover { color: #FFCC00 !important; }
-  [data-h="1"]:hover { color: #F4F1EA !important; }
-  [data-h="2"]:hover { background: #FFCC00 !important; color: #14100D !important; }
-  [data-h="3"]:hover { color: #FFFDF8 !important; }
+  [data-h="0"]:hover { color: #FFFDF8 !important; }
+  [data-h="1"]:hover { box-shadow: inset 0 0 0 4px currentColor !important; }
+  [data-h="2"]:hover { color: #14100D !important; }
 </style>
 </head>
 <body>
-<div style="min-height: 100vh; overflow-x: hidden; position: relative; isolation: isolate; background: #14100D;">
 
-  <header id="mm-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 40px; background: transparent; transition: transform 320ms cubic-bezier(.22,.68,.28,1), background-color 300ms linear, border-color 300ms linear; border-bottom: 1px solid transparent; will-change: transform;">
-    <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 11px; color: #F4F1EA;" data-h="0">
-      <img src="assets/icon.png" alt="Moose crossing icon" style="display: block; width: 30px; height: 30px; object-fit: contain;" />
-      <img src="assets/sign-arrow.png" alt="Moose Migration" style="display: block; height: 20px; width: auto;" />
-    </a>
-    <nav style="display: flex; align-items: center; gap: 30px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;">
-      <a href="#walk" style="color: rgba(244,241,234,.62);" data-h="1">The walk</a>
-      <a href="#trailer" style="color: rgba(244,241,234,.62);" data-h="1">Trailer</a>
-      <a href="#gallery" style="color: rgba(244,241,234,.62);" data-h="1">Screenshots</a>
-      <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 10px; background: #E1002A; color: #fff; padding: 11px 28px 11px 16px; font-size: 12px; letter-spacing: .12em; border-radius: 4px 0 0 4px; clip-path: polygon(0 0, calc(100% - 1.1em) 0, 100% 50%, calc(100% - 1.1em) 100%, 0 100%);" data-h="2">Wishlist<span aria-hidden="true" style="display: block; width: 7px; height: 7px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg);"></span></a>
-    </nav>
-  </header>
+<div style="min-height: 100vh; overflow-x: hidden; position: relative; isolation: isolate; background: #CBC08E;">
 
-  <section id="top" style="position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 120px 24px 96px; text-align: center;">
-    <div style="position: absolute; inset: 0;">
-      <img id="mm-hero-img" src="assets/shot-dusk-water.png" alt="Moose wading through shallow water at dusk" style="width: 100%; height: 100%; object-fit: cover; object-position: center 46%; transform: scale(1.12); will-change: transform;" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,16,13,.72) 0%, rgba(20,16,13,.34) 34%, rgba(20,16,13,.58) 72%, #14100D 100%);"></div>
+  <section id="top" style="position: relative; min-height: 100svh; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: clamp(20px, 4vw, 70px); overflow: hidden; padding: clamp(70px, 9vh, 120px) clamp(20px, 5vw, 90px) clamp(60px, 8vh, 96px); background: radial-gradient(130% 95% at 50% 26%, #E2D9AC 0%, #CFC492 52%, #BCAF76 100%);">
+    <div id="mm-hero-left" style="display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3.4vh, 44px);">
+      <a class="mm-hring" href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky" style="display: flex; flex-direction: column; align-items: center; gap: 9px; color: #14100D;" data-h="0">
+        <span style="display: flex; align-items: center; justify-content: center; width: clamp(56px, 5.4vw, 82px); height: clamp(56px, 5.4vw, 82px); border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; transition: box-shadow 170ms linear;" data-h="1"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364C24.522 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8Z"></path></svg></span>
+        <span style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;">Bluesky</span>
+      </a>
+      <a class="mm-hring" href="https://x.com/MooseMigration_" target="_blank" rel="noopener" aria-label="X" style="display: flex; flex-direction: column; align-items: center; gap: 9px; color: #14100D;" data-h="0">
+        <span style="display: flex; align-items: center; justify-content: center; width: clamp(56px, 5.4vw, 82px); height: clamp(56px, 5.4vw, 82px); border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; transition: box-shadow 170ms linear;" data-h="1"><svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg></span>
+        <span style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;">X</span>
+      </a>
+      <a class="mm-hring" href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" aria-label="Discord" style="display: flex; flex-direction: column; align-items: center; gap: 9px; color: #14100D;" data-h="0">
+        <span style="display: flex; align-items: center; justify-content: center; width: clamp(56px, 5.4vw, 82px); height: clamp(56px, 5.4vw, 82px); border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; transition: box-shadow 170ms linear;" data-h="1"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.198.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg></span>
+        <span style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;">Discord</span>
+      </a>
     </div>
 
-    <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(22px, 3vw, 34px);">
-      <div id="mm-sign" style="width: clamp(158px, 16vw, 244px); will-change: transform;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: clamp(18px, 3vh, 34px); text-align: center;">
+      <div id="mm-sign" style="width: clamp(210px, 26vw, 400px); will-change: transform;">
         <div id="mm-rig" role="button" tabindex="0" aria-label="Spin the signpost" title="Give it a spin" style="position: relative; width: 100%; aspect-ratio: 431 / 563; transform-origin: 45% 100%; cursor: pointer; -webkit-tap-highlight-color: transparent;">
-          <img id="mm-pole" src="assets/sign-pole.png" alt="" style="position: absolute; left: 41.05%; top: 33%; width: 7.9%; height: 65.5%; filter: drop-shadow(0 12px 22px rgba(0,0,0,.45));" />
-          <div id="mm-arrow-hinge" style="position: absolute; left: 2%; top: 56.5%; width: 96%;">
-            <img id="mm-arrow" src="assets/sign-arrow.png" alt="Moose Migration" style="display: block; width: 100%; height: auto; transform-origin: 45% 50%; filter: drop-shadow(0 10px 20px rgba(0,0,0,.42)); will-change: transform;" />
+          <img id="mm-pole" src="assets/sign-pole.png" alt="" style="position: absolute; left: 41.05%; top: 33%; width: 7.9%; height: 65.5%; filter: drop-shadow(0 16px 24px rgba(70,56,20,.3));" />
+          <div id="mm-arrow-hinge" style="position: absolute; z-index: 3; left: 2%; top: 56.5%; width: 96%;">
+            <img id="mm-arrow" src="assets/sign-arrow.png" alt="Moose Migration" style="display: block; width: 100%; height: auto; transform-origin: 45% 50%; filter: drop-shadow(0 14px 22px rgba(70,56,20,.3)); will-change: transform;" />
           </div>
-          <img id="mm-plate" src="assets/sign-plate.png" alt="Moose crossing sign" style="position: absolute; left: 6%; top: 0; width: 78%; filter: drop-shadow(0 16px 30px rgba(0,0,0,.5)); transition: filter 260ms linear;" />
+          <img id="mm-plate" src="assets/sign-plate.png" alt="Moose crossing sign" style="position: absolute; z-index: 2; left: 6%; top: 0; width: 78%; filter: drop-shadow(0 22px 34px rgba(70,56,20,.34)); transition: filter 260ms linear;" />
         </div>
       </div>
-      <h1 style="margin: 0; font-size: clamp(44px, 8.6vw, 124px); line-height: .88; letter-spacing: -.03em; color: #FFFDF8; text-wrap: balance;">Moose Migration</h1>
-      <p style="margin: 0; max-width: 30ch; font-family: 'BluuNext', Georgia, serif; font-size: clamp(18px, 1.55vw, 24px); line-height: 1.45; color: rgba(244,241,234,.82); text-wrap: pretty;">An adventure about the ancient journey moose have made every spring for thousands of years.</p>
-      <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 12px; background: #E1002A; color: #fff; padding: 16px 34px 16px 24px; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 5px 0 0 5px; clip-path: polygon(0 0, calc(100% - 1.15em) 0, 100% 50%, calc(100% - 1.15em) 100%, 0 100%);" data-h="2">Wishlist on Steam<span aria-hidden="true" style="display: block; width: 8px; height: 8px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg);"></span></a>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 4px;">
-        <a href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky" title="Bluesky" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364C24.522 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8Z"></path></svg></a>
-        <a href="https://x.com/MooseMigration_" target="_blank" rel="noopener" aria-label="X" title="X" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg></a>
-        <a href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" aria-label="Discord" title="Discord" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.198.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg></a>
+      <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;">Moose Migration</h1>
+      <p style="margin: 0; max-width: 28ch; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(19px, 1.8vw, 28px); font-weight: 700; letter-spacing: .1em; line-height: 1.5; text-transform: uppercase; color: #14100D; text-wrap: pretty;">An adventure about the ancient journey moose have made every spring for thousands of years.</p>
+      <a href="#walk" aria-label="Read on" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: rgba(20,16,13,.55);" data-h="2"><span aria-hidden="true" style="display: block; width: 13px; height: 13px; margin-top: -6px; border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg);"></span></a>
+    </div>
+
+    <div id="mm-hero-right" style="display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3.4vh, 44px);">
+      <a class="mm-hring" href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" aria-label="Steam" style="display: flex; flex-direction: column; align-items: center; gap: 9px; color: #14100D;" data-h="0">
+        <span style="display: flex; align-items: center; justify-content: center; width: clamp(56px, 5.4vw, 82px); height: clamp(56px, 5.4vw, 82px); border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; transition: box-shadow 170ms linear;" data-h="1"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"></path></svg></span>
+        <span style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;">Steam</span>
+      </a>
+      <a class="mm-hring" data-mail="1" href="#contact" aria-label="Contact" style="display: flex; flex-direction: column; align-items: center; gap: 9px; color: #14100D;" data-h="0">
+        <span style="display: flex; align-items: center; justify-content: center; width: clamp(56px, 5.4vw, 82px); height: clamp(56px, 5.4vw, 82px); border-radius: 50%; box-shadow: inset 0 0 0 1.5px currentColor; transition: box-shadow 170ms linear;" data-h="1"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M1.5 4.5h21v15h-21v-15Zm1.9 1.8L12 12.6l8.6-6.3H3.4Zm17.1 1.6-8.5 6.2L3.5 7.9v9.8h17v-9.8Z"></path></svg></span>
+        <span style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;">Contact</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="walk" style="position: relative; background: radial-gradient(120% 95% at 50% 0%, #C9DDAE 0%, #B6D096 58%, #A4C081 100%); padding: clamp(96px, 12vw, 170px) 0 clamp(90px, 11vw, 150px);">
+    <div class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+      <div class="mm-rev" style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: clamp(44px, 6vw, 80px);">
+        <p style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #14100D;">The migration</p>
+        <span aria-hidden="true" style="display: block; width: 14px; height: 14px; margin-top: -2px; border-bottom: 2px solid rgba(20,16,13,.6); border-right: 2px solid rgba(20,16,13,.6); transform: rotate(45deg);"></span>
       </div>
-      <div style="display: flex; align-items: center; gap: 16px; margin-top: 4px;">
-        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(244,241,234,.18);"></span>
-        <a data-mail="1" href="#contact" style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(244,241,234,.42); transition: color 180ms linear;" data-h="0">Press &amp; contact</a>
-        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(244,241,234,.18);"></span>
+      <div id="mm-walk-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); align-items: center; gap: clamp(32px, 5vw, 80px);">
+        <div class="mm-rev" style="display: flex; flex-direction: column; gap: clamp(22px, 2.6vw, 34px);">
+          <p style="margin: 0; max-width: 20ch; font-family: 'Norse', 'Millimetre', sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.8vw, 44px); line-height: 1.32; letter-spacing: .05em; color: #14100D; text-wrap: pretty;">As winter fades, moose leave their winter grounds behind and follow ancient paths toward fresh grazing grounds.</p>
+          <p style="margin: 0; max-width: 44ch; font-size: 16px; line-height: 1.8; color: rgba(20,16,13,.75); text-wrap: pretty;">Generation after generation, the migration continues. This spring, it's your turn. Shape and customize your own moose and become part of this ancient migration. wander through beautiful forests, cross lakes and streams, discover hidden places, and see what or who you stumble upon along the way.</p>
+        </div>
+        <figure class="mm-rev" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+          <div style="position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden;">
+            <img data-parallax="46" src="assets/shot-shallows.png" alt="A moose wading through the shallows" style="position: absolute; left: 0; top: -9%; width: 100%; height: 118%; object-fit: cover; will-change: transform;" />
+          </div>
+          <figcaption style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,16,13,.72); text-align: center;">Following the water / the old paths north</figcaption>
+        </figure>
       </div>
     </div>
+  </section>
 
-    <div style="position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%);">
+  <section id="trailer" style="position: relative; background: radial-gradient(120% 90% at 50% 10%, #D6E1E9 0%, #C3D2DC 58%, #B3C5D2 100%); padding: clamp(80px, 10vw, 140px) 0;">
+    <div class="mm-rev mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px clamp(34px, 4vw, 54px); display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <p style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #14100D;">Trailer</p>
+      <span aria-hidden="true" style="display: block; width: 14px; height: 14px; margin-top: -2px; border-bottom: 2px solid rgba(20,16,13,.6); border-right: 2px solid rgba(20,16,13,.6); transform: rotate(45deg);"></span>
+    </div>
+    <div class="mm-rev mm-pad" style="max-width: 1240px; margin: 0 auto; padding: 0 40px;">
+      <div id="mm-trailer-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0E0B09; overflow: hidden;">
+        <iframe id="mm-trailer" src="https://www.youtube.com/embed/jdij0_RZbBM?rel=0&amp;playsinline=1&amp;modestbranding=1" title="Moose Migration trailer" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;"></iframe>
+      </div>
     </div>
   </section>
 
-  <section id="trailer" style="position: relative; background: #14100D; padding: clamp(28px, 4vw, 60px) 0 0;">
-    <div class="mm-rev mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px 20px; display: flex; align-items: baseline; gap: 16px;">
-      <p style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #FFCC00;">Trailer</p>
+  <section id="gallery" style="position: relative; background: radial-gradient(120% 90% at 50% 0%, #D8CE9F 0%, #CBC08E 60%, #C2B681 100%); padding: clamp(96px, 12vw, 170px) 0 clamp(80px, 10vw, 130px);">
+    <div class="mm-rev mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px clamp(40px, 5vw, 66px); display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <p style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #14100D;">Screenshots</p>
+      <span aria-hidden="true" style="display: block; width: 14px; height: 14px; margin-top: -2px; border-bottom: 2px solid rgba(20,16,13,.6); border-right: 2px solid rgba(20,16,13,.6); transform: rotate(45deg);"></span>
     </div>
-    <div id="mm-trailer-frame" class="mm-rev" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0E0B09; overflow: hidden;">
-      <iframe id="mm-trailer" src="https://www.youtube.com/embed/jdij0_RZbBM?rel=0&amp;playsinline=1&amp;modestbranding=1" title="Moose Migration — trailer" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;"></iframe>
-    </div>
-  </section>
-
-  <section id="walk" style="position: relative; overflow: hidden;">
-    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;">
-      <img data-parallax="130" src="assets/shot-shallows.png" alt="" style="position: absolute; left: 0; top: -16%; width: 100%; height: 132%; object-fit: cover; opacity: .42; filter: saturate(.72) contrast(1.04); will-change: transform;" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, #14100D 0%, rgba(20,16,13,.74) 30%, rgba(20,16,13,.72) 70%, #14100D 100%);"></div>
-    </div>
-    <div class="mm-pad" style="position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: clamp(110px, 15vw, 210px) 40px clamp(96px, 12vw, 170px); text-align: center;">
-    <p class="mm-rev" style="margin: 0 0 clamp(30px, 4vw, 52px); font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(15px, 1.6vw, 22px); font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: #FFCC00;">The migration</p>
-    <p class="mm-rev" style="margin: 0 auto; max-width: 34ch; font-family: 'BluuNext', Georgia, serif; font-size: clamp(23px, 2.6vw, 42px); line-height: 1.32; color: #F4F1EA; text-shadow: 0 2px 26px rgba(20,16,13,.65); text-wrap: pretty;">As winter fades, moose leave their winter grounds behind and wander through the forests, following ancient paths toward fresh grazing grounds. Generation after generation, the migration continues. This spring, it's your turn.</p>
-    <p class="mm-rev" style="margin: clamp(34px, 4vw, 56px) auto 0; max-width: 48ch; font-size: 16px; line-height: 1.7; color: rgba(244,241,234,.6); text-wrap: pretty;">Shape and customize your own moose and become part of this ancient migration. Wander through beautiful forests, cross lakes and streams, discover hidden places, and see what or who you stumble upon along the way. Follow the path or wander off to explore, meet wildlife, encounter strange things in the woods, and get into all kinds of goofy situations.</p>
-    </div>
-  </section>
-
-  <section class="mm-rev mm-band" style="padding: 0;">
-    <div class="mm-band-frame" style="position: relative; overflow: hidden; height: clamp(340px, 66vh, 760px);">
-      <img data-parallax="76" src="assets/shot-swim.png" alt="Swimming across a lake at sunset" style="position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform;" />
-    </div>
-    <p class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 16px 40px 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,204,0,.7);">Crossing the lake / the water behind, the path ahead</p>
-  </section>
-
-  <section id="gallery" style="position: relative; overflow: hidden; padding: clamp(96px, 12vw, 170px) 0 clamp(40px, 5vw, 70px);">
-    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;">
-      <img data-parallax="150" src="assets/shot-beach.png" alt="" style="position: absolute; left: 0; top: -16%; width: 100%; height: 132%; object-fit: cover; opacity: .3; filter: saturate(.6) contrast(1.02); will-change: transform;" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, #14100D 0%, rgba(20,16,13,.8) 26%, rgba(20,16,13,.86) 72%, #14100D 100%);"></div>
-    </div>
-    <div class="mm-rev mm-pad" style="position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 40px 26px;">
-      <p style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #FFCC00;">Screenshots</p>
-    </div>
-    <div id="mm-gallery-grid" class="mm-pad" style="position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);">
-      <figure class="mm-rev" style="margin: 0;">
+    <div id="mm-gallery-grid" class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(34px, 4vw, 60px) clamp(22px, 2.6vw, 38px);">
+      <figure class="mm-rev" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px;">
         <img src="assets/shot-customizer.png" alt="Shaping a moose in the customizer" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;" />
-        <figcaption style="margin-top: 12px; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,204,0,.7);">Your moose / shape it however you like</figcaption>
+        <figcaption style="text-align: center; font-family: 'Norse', 'Millimetre', sans-serif;">
+          <span style="display: block; font-size: clamp(17px, 1.5vw, 22px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #14100D;">Your moose</span>
+          <span style="display: block; margin-top: 6px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(20,16,13,.72);">Shape it however you like</span>
+        </figcaption>
       </figure>
-      <figure class="mm-rev" style="margin: 0;">
+      <figure class="mm-rev" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px;">
         <img src="assets/shot-song.png" alt="A moose singing the Moose Song" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;" />
-        <figcaption style="margin-top: 12px; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,204,0,.7);">The Moose Song / sing yourself back to the herd</figcaption>
+        <figcaption style="text-align: center; font-family: 'Norse', 'Millimetre', sans-serif;">
+          <span style="display: block; font-size: clamp(17px, 1.5vw, 22px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #14100D;">The Moose Song</span>
+          <span style="display: block; margin-top: 6px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(20,16,13,.72);">Sing yourself back to the herd</span>
+        </figcaption>
       </figure>
-      <figure class="mm-rev" style="margin: 0;">
+      <figure class="mm-rev" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px;">
         <img src="assets/shot-birds.png" alt="A white moose with an eagle and ravens perched on its antlers" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;" />
-        <figcaption style="margin-top: 12px; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,204,0,.7);">Wildlife / who you stumble upon along the way</figcaption>
+        <figcaption style="text-align: center; font-family: 'Norse', 'Millimetre', sans-serif;">
+          <span style="display: block; font-size: clamp(17px, 1.5vw, 22px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #14100D;">Wildlife</span>
+          <span style="display: block; margin-top: 6px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(20,16,13,.72);">Who you stumble upon along the way</span>
+        </figcaption>
       </figure>
-      <figure class="mm-rev" style="margin: 0;">
+      <figure class="mm-rev" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px;">
         <img src="assets/shot-dash.png" alt="Dashing along a lakeshore at speed" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;" />
-        <figcaption style="margin-top: 12px; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,204,0,.7);">Wander off / or dash straight through it</figcaption>
+        <figcaption style="text-align: center; font-family: 'Norse', 'Millimetre', sans-serif;">
+          <span style="display: block; font-size: clamp(17px, 1.5vw, 22px); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #14100D;">Wander off</span>
+          <span style="display: block; margin-top: 6px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(20,16,13,.72);">Or dash straight through it</span>
+        </figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="mm-rev mm-band" style="padding: clamp(64px, 8vw, 120px) 0 0;">
-    <div class="mm-band-frame" style="position: relative; overflow: hidden; height: clamp(320px, 60vh, 700px);">
-      <img data-parallax="76" src="assets/shot-snow-slope.png" alt="Descending a snowy slope above the water" style="position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform;" />
-    </div>
-    <p class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 16px 40px 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; color: rgba(255,204,0,.7);">Winter grounds / the last snow before the paths open</p>
-  </section>
-
-  <section style="position: relative; overflow: hidden;">
-    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;">
-      <img data-parallax="140" src="assets/shot-swim.png" alt="" style="position: absolute; left: 0; top: -16%; width: 100%; height: 132%; object-fit: cover; opacity: .58; filter: saturate(.9); will-change: transform;" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, #14100D 0%, rgba(20,16,13,.66) 32%, rgba(20,16,13,.7) 68%, #14100D 100%);"></div>
-    </div>
-    <div class="mm-rev mm-pad" style="position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: clamp(120px, 15vw, 210px) 40px clamp(110px, 13vw, 190px); text-align: center;">
-    <p style="margin: 0 auto clamp(28px, 3.6vw, 48px); max-width: 32ch; font-family: 'BluuNext', Georgia, serif; font-size: clamp(19px, 1.9vw, 30px); line-height: 1.4; color: rgba(244,241,234,.68); text-wrap: pretty;">And if you ever lose your way, sing the Moose Song. An ancient song passed down through generations of wandering moose, guiding them back to the migration and the others making the journey.</p>
-    <blockquote style="margin: 0; font-family: 'Millimetre', sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(27px, 4.4vw, 66px); line-height: 1.02; letter-spacing: -.01em; color: #F4F1EA;"><span style="display: block; font-family: 'Norse', 'Millimetre', sans-serif; font-weight: 700; font-size: .32em; letter-spacing: .2em; color: rgba(255,204,0,.8); margin-bottom: .9em;">Your moose. Your journey. Your migration.</span><span style="display: block;">The more you're moosin',</span><span style="display: block; color: #E1002A;">the more they'll find out!</span></blockquote>
-    </div>
-  </section>
-
-  <section id="mm-cta" style="position: relative; overflow: hidden; border-top: 1px solid rgba(244,241,234,.12);">
-    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;">
-      <img data-parallax="120" src="assets/shot-dusk-water.png" alt="" style="position: absolute; left: 0; top: -16%; width: 100%; height: 132%; object-fit: cover; opacity: .4; filter: saturate(.78); will-change: transform;" />
-      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, #14100D 0%, rgba(20,16,13,.7) 34%, rgba(20,16,13,.8) 76%, #14100D 100%);"></div>
-    </div>
-    <div class="mm-pad" style="position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 40px clamp(80px, 10vw, 130px); text-align: center;">
-    <div class="mm-rev" style="padding-top: clamp(80px, 10vw, 140px); display: flex; flex-direction: column; align-items: center; gap: 26px;">
-      <h2 style="margin: 0; font-size: clamp(34px, 5.4vw, 78px); line-height: .98; letter-spacing: -.02em;">Walk with the herd.</h2>
-      <p style="margin: 0; max-width: 42ch; font-size: 16px; line-height: 1.7; color: rgba(244,241,234,.55); text-wrap: pretty;">Release date to be announced. Add Moose Migration to your wishlist and get notified when it becomes available.</p>
-      <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 12px; background: #E1002A; color: #fff; padding: 17px 36px 17px 26px; margin-top: 6px; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 5px 0 0 5px; clip-path: polygon(0 0, calc(100% - 1.15em) 0, 100% 50%, calc(100% - 1.15em) 100%, 0 100%);" data-h="2">Wishlist on Steam<span aria-hidden="true" style="display: block; width: 8px; height: 8px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg);"></span></a>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 26px; margin-top: 26px;">
-        <a href="https://bsky.app/profile/moosemigration.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky" title="Bluesky" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364C24.522 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8Z"></path></svg></a>
-        <a href="https://x.com/MooseMigration_" target="_blank" rel="noopener" aria-label="X" title="X" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg></a>
-        <a href="https://discord.gg/EZdy5cKCeR" target="_blank" rel="noopener" aria-label="Discord" title="Discord" style="display: flex; color: rgba(255,204,0,.8); transition: color 180ms linear;" data-h="3"><svg viewBox="0 0 24 24" width="25" height="25" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.198.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg></a>
+  <section class="mm-rev" style="position: relative; background: radial-gradient(120% 90% at 50% 10%, #D3C0DE 0%, #BCA4CB 58%, #A891B9 100%); padding: clamp(80px, 10vw, 140px) 0;">
+    <div class="mm-pad" style="max-width: 1500px; margin: 0 auto; padding: 0 40px;">
+      <div class="mm-band-frame" style="position: relative; overflow: hidden; height: clamp(300px, 56vh, 640px);">
+        <img data-parallax="60" src="assets/shot-swim.png" alt="Swimming across a lake at sunset" style="position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform;" />
       </div>
-      <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px;">
-        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(244,241,234,.18);"></span>
-        <a data-mail="1" href="#contact" style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(244,241,234,.42); transition: color 180ms linear;" data-h="0">Press &amp; contact</a>
-        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(244,241,234,.18);"></span>
-      </div>
-    </div>
+      <p style="margin: 18px 0 0; text-align: center; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,16,13,.72);">Crossing the lake / the water behind, the path ahead</p>
     </div>
   </section>
 
-  <footer style="border-top: 1px solid rgba(244,241,234,.12);">
-    <div class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 26px 40px 34px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,204,0,.55);">
-      <span>© <a href="https://gamedreaming.com" target="_blank" rel="noopener" style="color: inherit;" data-h="0">Gamedreaming</a></span>
+  <section style="position: relative; background: radial-gradient(120% 90% at 50% 0%, #E3C1B8 0%, #D3A79C 58%, #C29287 100%); padding: clamp(100px, 13vw, 180px) 0;">
+    <div class="mm-rev mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px; text-align: center;">
+      <p style="margin: 0 auto clamp(34px, 4vw, 56px); max-width: 44ch; font-size: 17px; line-height: 1.8; color: rgba(20,16,13,.75); text-wrap: pretty;">And if you ever lose your way, sing the Moose Song. An ancient song passed down through generations of wandering moose, guiding them back to the migration and the others making the journey.</p>
+      <blockquote style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 4vw, 60px); line-height: 1.18; letter-spacing: .04em; color: #14100D;"><span style="display: block; font-size: .36em; letter-spacing: .2em; color: rgba(20,16,13,.6); margin-bottom: 1.1em;">Your moose. Your journey. Your migration.</span><span style="display: block;">The more you're moosin',</span><span style="display: block;">the more they'll find out!</span></blockquote>
+    </div>
+  </section>
+
+  <section class="mm-rev" style="position: relative; background: radial-gradient(120% 90% at 50% 10%, #D6E1E9 0%, #C3D2DC 58%, #B3C5D2 100%); padding: clamp(80px, 10vw, 140px) 0;">
+    <div class="mm-pad" style="max-width: 1500px; margin: 0 auto; padding: 0 40px;">
+      <div class="mm-band-frame" style="position: relative; overflow: hidden; height: clamp(300px, 54vh, 620px);">
+        <img data-parallax="60" src="assets/shot-snow-slope.png" alt="Descending a snowy slope above the water" style="position: absolute; left: 0; top: -10%; width: 100%; height: 120%; object-fit: cover; will-change: transform;" />
+      </div>
+      <p style="margin: 18px 0 0; text-align: center; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,16,13,.72);">Winter grounds / the last snow before the paths open</p>
+    </div>
+  </section>
+
+  <section id="mm-cta" style="position: relative; background: radial-gradient(130% 100% at 50% 20%, #E2D9AC 0%, #CFC492 52%, #BCAF76 100%); padding: clamp(100px, 13vw, 170px) 0 clamp(70px, 9vw, 110px);">
+    <div class="mm-rev mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center;">
+      <div style="position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: clamp(6px, 1.4vw, 18px);">
+        <p id="mm-moo" aria-live="polite" style="position: absolute; bottom: calc(100% + 6px); margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(14px, 1.4vw, 19px); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #14100D; white-space: nowrap; opacity: 0; pointer-events: none;"></p>
+        <img id="mm-footer-sign" src="assets/sign-plate.png" alt="Moose crossing sign" role="button" tabindex="0" title="Go on, honk it" style="display: block; width: clamp(150px, 17vw, 260px); height: auto; cursor: pointer; transform-origin: 50% 88%; -webkit-tap-highlight-color: transparent;" />
+      </div>
+      <h2 style="margin: 0; font-family: 'Norse', 'Millimetre', sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(30px, 4.6vw, 66px); line-height: 1.1; letter-spacing: .05em; color: #14100D;">Walk with the herd</h2>
+      <p style="margin: 0; max-width: 42ch; font-size: 16px; line-height: 1.8; color: rgba(20,16,13,.7); text-wrap: pretty;">Release date to be announced. Add Moose Migration to your wishlist and get notified when it becomes available.</p>
+      <a href="https://store.steampowered.com/app/4761490/Moose_Migration/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 14px; margin-top: 8px; font-family: 'Norse', 'Millimetre', sans-serif; font-size: clamp(18px, 1.9vw, 26px); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #14100D;" data-h="0">Wishlist on Steam<span aria-hidden="true" style="display: block; width: 12px; height: 12px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg);"></span></a>
+      <div id="mm-contact" style="display: flex; align-items: center; gap: 16px; margin-top: 30px;">
+        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(20,16,13,.3); transition: background 180ms linear;"></span>
+        <a data-mail="1" href="#contact" style="font-family: 'Norse', 'Millimetre', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(20,16,13,.72);" data-h="0">Press &amp; contact</a>
+        <span aria-hidden="true" style="display: block; width: 34px; height: 1px; background: rgba(20,16,13,.3); transition: background 180ms linear;"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #BCAF76;">
+    <div class="mm-pad" style="max-width: 1400px; margin: 0 auto; padding: 26px 40px 34px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; font-family: 'Norse', 'Millimetre', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,16,13,.7);">
+      <span>© <a href="https://gamedreaming.com" target="_blank" rel="noopener" style="color: inherit;" data-h="2">Gamedreaming</a></span>
     </div>
   </footer>
 
 </div>
+
 <script>
 (function () {
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function wireMail() {
-    var u = 'hello', d = 'gamedreaming' + '.' + 'com';
-    var t = Array.prototype.slice.call(document.querySelectorAll('[data-mail]'));
-    t.forEach(function (a) { a.setAttribute('href', 'mail' + 'to:' + u + String.fromCharCode(64) + d); });
-  }
-
   function reveals() {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
         if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add('mm-in'); io.unobserve(e.target); }
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
-    Array.prototype.slice.call(document.querySelectorAll('.mm-rev')).forEach(function (el) { io.observe(el); });
+    document.querySelectorAll('.mm-rev').forEach(function (el) { io.observe(el); });
   }
 
-  function chrome() {
-    var header = document.getElementById('mm-header');
-    var hero = document.getElementById('mm-hero-img');
-    var lastY = window.scrollY || 0, hidden = false, solid = false, raf = null;
-    function setHeader(y) {
-      if (!header) return;
-      var delta = y - lastY, wantSolid = y > 90;
-      if (wantSolid !== solid) {
-        solid = wantSolid;
-        header.style.backgroundColor = solid ? 'rgba(20,16,13,.92)' : 'transparent';
-        header.style.borderBottomColor = solid ? 'rgba(244,241,234,.12)' : 'transparent';
-        header.style.backdropFilter = solid ? 'blur(10px)' : 'none';
-      }
-      if (y < 80) { if (hidden) { header.style.transform = 'translateY(0)'; hidden = false; } }
-      else if (delta > 6 && !hidden) { header.style.transform = 'translateY(-100%)'; hidden = true; }
-      else if (delta < -6 && hidden) { header.style.transform = 'translateY(0)'; hidden = false; }
-      if (Math.abs(delta) > 6) lastY = y;
-    }
-    var plx = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]')).map(function (el) {
+  function parallax() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]')).map(function (el) {
       return { el: el, speed: parseFloat(el.getAttribute('data-parallax')) || 60 };
     });
-    function parallax() {
-      var vh = window.innerHeight || 800;
-      for (var i = 0; i < plx.length; i++) {
-        var p = plx[i], box = p.el.parentElement;
-        if (!box) continue;
-        var r = box.getBoundingClientRect();
-        if (r.bottom < -240 || r.top > vh + 240) continue;
-        var prog = (vh / 2 - (r.top + r.height / 2)) / ((vh + r.height) / 2);
-        p.el.style.transform = 'translate3d(0,' + (Math.max(-1, Math.min(1, prog)) * p.speed).toFixed(1) + 'px,0)';
-      }
-    }
+    var raf = null;
     function onScroll() {
-      if (raf) return;
+      if (raf || reduce) return;
       raf = requestAnimationFrame(function () {
         raf = null;
-        var y = window.scrollY || 0;
-        if (hero && !reduce) hero.style.transform = 'translate3d(0,' + (y * 0.14).toFixed(1) + 'px,0) scale(1.12)';
-        if (!reduce) parallax();
-        setHeader(y);
+        var vh = window.innerHeight || 800;
+        for (var i = 0; i < items.length; i++) {
+          var p = items[i], box = p.el.parentElement;
+          if (!box) continue;
+          var r = box.getBoundingClientRect();
+          if (r.bottom < -240 || r.top > vh + 240) continue;
+          var prog = (vh / 2 - (r.top + r.height / 2)) / ((vh + r.height) / 2);
+          var t = Math.max(-1, Math.min(1, prog)) * p.speed;
+          p.el.style.transform = 'translate3d(0,' + t.toFixed(1) + 'px,0)';
+        }
       });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -290,10 +282,11 @@
     function onMove(e) {
       var r = rig.getBoundingClientRect();
       if (!r.width) return;
-      var px = r.left + r.width * 0.45, py = r.top + r.height * 0.624;
-      var dx = Math.max(e.clientX - px, 46), dy = e.clientY - py;
-      var a = Math.atan2(dy, dx) * 180 / Math.PI;
-      target = Math.max(-26, Math.min(26, a));
+      var px = r.left + r.width * 0.45;
+      var py = r.top + r.height * 0.624;
+      var dx = Math.max(e.clientX - px, 46);
+      var dy = e.clientY - py;
+      target = Math.max(-26, Math.min(26, Math.atan2(dy, dx) * 180 / Math.PI));
     }
     function knock() {
       if (!plate) return;
@@ -313,17 +306,36 @@
       frame = null;
       cur += (target - cur) * 0.085;
       spinCur += (spin - spinCur) * 0.07;
-      arrow.style.transform = 'rotate(' + (cur + Math.sin(now / 1500) * 1.2 + spinCur).toFixed(2) + 'deg)';
+      var idle = Math.sin(now / 1500) * 1.2;
+      arrow.style.transform = 'rotate(' + (cur + idle + spinCur).toFixed(2) + 'deg)';
       if (visible && !reduce) frame = requestAnimationFrame(tick);
     }
     function start() { if (!frame && visible && !reduce) frame = requestAnimationFrame(tick); }
 
     new IntersectionObserver(function (es) {
       visible = es[0].isIntersecting;
-      if (visible) start();
-      else if (frame) { cancelAnimationFrame(frame); frame = null; }
+      if (visible) start(); else if (frame) { cancelAnimationFrame(frame); frame = null; }
     }, { threshold: 0 }).observe(rig);
     start();
+  }
+
+  function footerSign() {
+    var sign = document.getElementById('mm-footer-sign');
+    var moo = document.getElementById('mm-moo');
+    if (!sign || !moo) return;
+    function honk() {
+      moo.textContent = 'Do not lick the sign.';
+      moo.classList.remove('mm-pop');
+      void moo.offsetWidth;
+      moo.classList.add('mm-pop');
+      sign.classList.remove('mm-honk');
+      void sign.offsetWidth;
+      sign.classList.add('mm-honk');
+    }
+    sign.addEventListener('click', honk);
+    sign.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); honk(); }
+    });
   }
 
   function trailer() {
@@ -343,7 +355,14 @@
     }, { threshold: 0.55 }).observe(frame);
   }
 
-  function init() { wireMail(); reveals(); chrome(); signpost(); trailer(); }
+  function wireMail() {
+    var u = 'hello', d = 'gamedreaming' + '.' + 'com';
+    document.querySelectorAll('[data-mail]').forEach(function (a) {
+      a.setAttribute('href', 'mail' + 'to:' + u + String.fromCharCode(64) + d);
+    });
+  }
+
+  function init() { wireMail(); reveals(); parallax(); signpost(); footerSign(); trailer(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
